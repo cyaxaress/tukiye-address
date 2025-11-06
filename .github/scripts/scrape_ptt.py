@@ -342,9 +342,7 @@ def main():
         # Scrape the data
         address_data = scraper.scrape()
 
-        # Generate timestamped filename
-        timestamp = datetime.now().strftime('%Y_%m_%d_%H_%M_%S')
-        filename = f'ptt_il_ilce_mahalle_{timestamp}.json'
+        filename = f'ptt_il_ilce_mahalle.json'
 
         # Save to file
         scraper.save_to_file(address_data, filename)
