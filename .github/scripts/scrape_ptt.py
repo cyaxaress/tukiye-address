@@ -333,6 +333,40 @@ class PTTAddressScraper:
                 indent=2
             )
 
+    def update_readme(self, readme_path: str = 'README.md'):
+        """Update README with last updated date."""
+        if not os.path.exists(readme_path):
+            print(f"README dosyası bulunamadı: {readme_path}")
+            return
+
+        # Read current README
+        with open(readme_path, 'r', encoding='utf-8') as f:
+            readme_content = f.read()
+
+        # Get current date and time in Turkish format
+        now = datetime.now()
+        # Format: "15 Ocak 2024, 14:30" (Turkish month names)
+        turkish_months = [
+            'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+            'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+        ]
+        formatted_date = f"{now.day} {turkish_months[now.month - 1]} {now.year}, {now.hour:02d}:{now.minute:02d}"
+
+        # Replace the date in the last updated section
+        last_updated_pattern = r'(## 📅 Son Güncelleme\s*\n\s*\*\*Son güncelleme:\*\*)[^\n]+'
+        readme_content = re.sub(
+            last_updated_pattern,
+            f'\\1 {formatted_date}',
+            readme_content,
+            flags=re.MULTILINE
+        )
+
+        # Write updated README
+        with open(readme_path, 'w', encoding='utf-8') as f:
+            f.write(readme_content)
+
+        print(f"README güncellendi: Son güncelleme tarihi eklendi ({formatted_date})")
+
 
 def main():
     """Main entry point."""
@@ -348,6 +382,9 @@ def main():
         scraper.save_to_file(address_data, filename)
 
         print(f"\nVeriler PTT/{filename} dosyasına kaydedildi.")
+
+        # Update README with last updated date
+        scraper.update_readme()
 
     except Exception as e:
         print(f"Hata: {e}")

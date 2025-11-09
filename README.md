@@ -2,6 +2,10 @@
 
 > Türkiye'nin en güncel il, ilçe ve mahalle verilerini PTT'nin resmi kaynağından otomatik olarak toplayan açık kaynak proje.
 
+## 📅 Son Güncelleme
+
+**Son güncelleme:** Henüz güncellenmedi
+
 ## 🎯 Problem
 
 Türkiye'de yazılım geliştiren her geliştiricinin karşılaştığı ortak bir sorun var: **güncel adres verisi bulmak**.
