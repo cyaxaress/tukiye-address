@@ -4,7 +4,7 @@
 
 ## 📅 Son Güncelleme
 
-**Son güncelleme:** 17 Kasım 2025, 01:45
+**Son güncelleme:** 18 Kasım 2025, 01:44
 
 ## 🎯 Problem
 
